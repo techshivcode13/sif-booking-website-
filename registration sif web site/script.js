@@ -1,31 +1,19 @@
-// Retreat data
-const retreats = [
-    {
-        id: 1,
-        name: 'Sunyatee Retreat Shantivan',
-        location: 'Shantivan',
-        duration: '3 Days / 2 Nights',
-        date: '20 Feb 2026 to 23 Feb 2026',
-        capacity: '120 Seats',
-        image: 'assets/shantivan.png'
-    },
-    {
-        id: 2,
-        name: 'Sunyatee Retreat Nagloka',
-        location: 'Nagloka',
-        duration: '5 Days / 4 Nights',
-        capacity: '50 Seats',
-        image: 'assets/nagloka.jpg'
-    },
-    {
-        id: 3,
-        name: 'Sunyatee Studio Retreat',
-        location: 'Nagpur Studio',
-        duration: '1 Day retreat',
-        capacity: '50 Seats',
-        image: 'assets/studio.jpg'
+// Retreat data (Initial placeholder, will be populated from DB)
+let retreats = [];
+
+async function fetchRetreats() {
+    try {
+        const response = await fetch('/.netlify/functions/get-retreats');
+        if (response.ok) {
+            retreats = await response.json();
+            console.log('Retreats loaded:', retreats);
+            showRetreats(); // Refresh the view
+        }
+    } catch (e) {
+        console.warn('Failed to load dynamic retreats, using fallback if needed', e);
+        // Optional: Add hardcoded fallback here if DB is down
     }
-];
+}
 
 // View Components
 function renderSplash() {
@@ -49,7 +37,7 @@ function renderRetreats() {
             <div class="retreat-grid">
                 ${retreats.map((retreat, index) => `
                     <div class="retreat-card fade-in delay-${index + 1}">
-                        <div class="retreat-image" style="background-image: url('${retreat.image}')">
+                        <div class="retreat-image" style="background-image: url('${retreat.image_url || retreat.image}')">
                             <span class="retreat-badge">${retreat.capacity}</span>
                         </div>
                         <div class="retreat-content">
@@ -74,7 +62,7 @@ function renderRetreats() {
                                     <span>${retreat.date}</span>
                                 </div>` : ''}
                             </div>
-                            ${(retreat.id === 3 || retreat.id === 2)
+                            ${(retreat.status === 'launching_soon')
             ? '<button class="btn-book" style="opacity: 0.6; cursor: not-allowed;" disabled>Launching Soon</button>'
             : `<button class="btn-book" onclick="bookRetreat(${retreat.id})">Book This Retreat</button>`
         }
@@ -175,4 +163,5 @@ function bookRetreat(id) {
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app').innerHTML = renderSplash();
+    fetchRetreats();
 });
