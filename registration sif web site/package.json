@@ -1,0 +1,14 @@
+{
+    "name": "sunyatee-retreat-website",
+    "version": "1.0.0",
+    "description": "Sunyatee Retreat booking website with secure payment processing",
+    "dependencies": {
+        "@supabase/supabase-js": "^2.39.0",
+        "razorpay": "^2.9.2",
+        "resend": "^3.0.0",
+        "pdfkit": "^0.14.0"
+    },
+    "engines": {
+        "node": "22.x"
+    }
+}

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shantivan Retreat | Sunya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Forum&family=Luxurious+Roman&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking.css">
+</head>
+
+<body>
+    <div class="booking-container">
+        <div class="booking-header">
+            <button class="btn-back" onclick="window.location.href='INDEX.HTML'">← Back to Retreats</button>
+            <h1>Shantivan Retreat</h1>
+            <p>Select your accommodation</p>
+        </div>
+
+        <div class="room-grid">
+            <!-- 4 Beds Room -->
+            <div class="room-card fade-in delay-1">
+                <div class="room-header">
+                    <div class="room-capacity-badge">4 Beds</div>
+
+                </div>
+                <div class="room-content">
+                    <h2 class="room-title">Standard Room</h2>
+                    <p class="room-subtitle">Perfect for small groups</p>
+
+                    <div class="room-features">
+                        <div class="feature-item">Up to 4 people</div>
+                        <div class="feature-item">Comfortable beds</div>
+                        <div class="feature-item">Shared bathroom</div>
+                        <div class="feature-item">Meditation space</div>
+                    </div>
+
+                    <div class="room-price">
+                        <span class="price-label">Starting from</span>
+                        <div class="price-group">
+                            <span class="price-amount">₹8,500</span>
+                        </div>
+                        <span class="price-period">per person</span>
+                    </div>
+
+                    <button class="btn-select-room" onclick="selectRoom('4 Beds Room')">Book Room</button>
+                </div>
+            </div>
+
+            <!-- 10 Beds Room -->
+            <div class="room-card room-popular fade-in delay-2">
+
+                <div class="room-header">
+                    <div class="room-capacity-badge">10 Beds</div>
+
+                </div>
+                <div class="room-content">
+                    <h2 class="room-title">Shared Dormitory</h2>
+                    <p class="room-subtitle">Great for community experience</p>
+
+                    <div class="room-features">
+                        <div class="feature-item">Up to 10 people</div>
+                        <div class="feature-item">Single bed</div>
+                        <div class="feature-item">Shared facilities</div>
+                        <div class="feature-item">Community bonding</div>
+                    </div>
+
+                    <div class="room-price">
+                        <span class="price-label">Starting from</span>
+                        <div class="price-group">
+                            <span class="price-amount">₹6,500</span>
+                        </div>
+                        <span class="price-period">per person</span>
+                    </div>
+
+                    <button class="btn-select-room" onclick="selectRoom('10 Beds Room')">Book Room</button>
+                </div>
+            </div>
+
+            <!-- 15 Beds Room -->
+            <div class="room-card fade-in delay-3">
+                <div class="room-header">
+                    <div class="room-capacity-badge">15 Beds</div>
+
+                </div>
+                <div class="room-content">
+                    <h2 class="room-title">Large Dormitory</h2>
+                    <p class="room-subtitle">Budget-friendly option</p>
+
+                    <div class="room-features">
+                        <div class="feature-item">Up to 15 people</div>
+                        <div class="feature-item">Single bed</div>
+                        <div class="feature-item">Shared facilities</div>
+                        <div class="feature-item">Best value</div>
+                    </div>
+
+                    <div class="room-price">
+                        <span class="price-label">Starting from</span>
+                        <div class="price-group">
+                            <span class="price-amount">₹5,500</span>
+                        </div>
+                        <span class="price-period">per person</span>
+                    </div>
+
+                    <button class="btn-select-room" onclick="selectRoom('15 Beds Room')">Book Room</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>What's Included</h3>
+            <div class="included-items">
+                <div class="included-item">✓ All meals (breakfast, lunch, dinner)</div>
+                <div class="included-item">✓ Daily meditation sessions</div>
+                <div class="included-item">✓ Yoga classes</div>
+                <div class="included-item">✓ Access to all facilities</div>
+                <div class="included-item">✓ Guided nature walks</div>
+                <div class="included-item">✓ Workshop materials</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Complete Booking</h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalRoomType" class="selected-room-info"></p>
+                <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" required min="18" max="100" placeholder="Age">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}"
+                            placeholder="10-digit mobile number">
+                        <small>Format: 10 digits without country code</small>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="btn-confirm">Confirm Booking</button>
+                    </div>
+                </form>
+
+                <!-- Success Card (Initially Hidden) -->
+                <div id="successCard" class="success-card">
+                    <div class="success-icon">✓</div>
+                    <h2>Booking Confirmed!</h2>
+                    <p class="success-tagline">Happy Retreat</p>
+
+                    <div class="success-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Name</span>
+                            <span id="scName" class="detail-value">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Booking ID</span>
+                            <span id="scID" class="detail-value">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Retreat Date</span>
+                            <span class="detail-value">15 Feb 2026</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-home" onclick="window.location.href='INDEX.HTML'">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External SDKs -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        // Booking page functionality
+
+        // --- 1. Global State & Constants ---
+        let currentBookingState = {
+            roomType: '',
+            price: 0
+        };
+
+        const ROOM_PRICES = {
+            'Standard Room': 8500,
+            'Shared Dormitory': 6500,
+            'Large Dormitory': 5500,
+            '4 Beds Room': 8500,
+            '10 Beds Room': 6500,
+            '15 Beds Room': 5500
+        };
+
+        // --- 2. Function Definitions ---
+
+        function selectRoom(roomType) {
+            currentBookingState.roomType = roomType;
+
+            // Determine price
+            if (ROOM_PRICES[roomType]) {
+                currentBookingState.price = ROOM_PRICES[roomType];
+            } else {
+                const key = Object.keys(ROOM_PRICES).find(k => roomType.includes(k) || k.includes(roomType));
+                currentBookingState.price = key ? ROOM_PRICES[key] : 0;
+            }
+
+            if (currentBookingState.price === 0) {
+                console.warn('Room price not found for:', roomType);
+            }
+
+            // Update Modal
+            const roomTypeElement = document.getElementById('modalRoomType');
+            if (roomTypeElement) {
+                roomTypeElement.textContent = `Booking for: ${roomType} (₹${currentBookingState.price.toLocaleString('en-IN')})`;
+            }
+
+            // Show modal - Reset View to Form
+            document.getElementById('bookingForm').style.display = 'block';
+            document.getElementById('successCard').style.display = 'none';
+            document.querySelector('.modal-header h2').textContent = 'Complete Booking';
+            document.querySelector('.close-modal').style.display = 'block';
+
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            } else {
+                console.error('Modal element not found!');
+            }
+        }
+        window.selectRoom = selectRoom;
+
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    const form = document.getElementById('bookingForm');
+                    if (form) form.reset();
+                }, 300);
+            }
+        }
+        window.closeModal = closeModal;
+
+
+        async function handleBookingSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const mobile = document.getElementById('mobile').value;
+
+            if (!name || !age || !mobile || mobile.length !== 10) {
+                alert('Please fill in all fields correctly.');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.btn-confirm');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+
+            try {
+                // Call serverless function to create payment
+                const response = await fetch('/.netlify/functions/create-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name,
+                        age,
+                        mobile,
+                        roomType: currentBookingState.roomType,
+                        amount: currentBookingState.price
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to create payment');
+                }
+
+                const paymentData = await response.json();
+
+                // Initialize Razorpay with data from serverless function
+                const options = {
+                    "key": paymentData.keyId,
+                    "amount": paymentData.amount,
+                    "currency": paymentData.currency,
+                    "order_id": paymentData.orderId,
+                    "name": "Sunyatee Retreat",
+                    "description": `Booking for ${currentBookingState.roomType}`,
+                    "image": "assets/logo.png",
+                    "handler": async function (razorpayResponse) {
+                        // Payment successful - show success card
+                        document.getElementById('scName').textContent = name;
+                        document.getElementById('scID').textContent = razorpayResponse.razorpay_payment_id;
+
+                        document.getElementById('bookingForm').style.display = 'none';
+                        document.getElementById('successCard').style.display = 'block';
+                        document.querySelector('.modal-header h2').textContent = 'Success!';
+                        document.querySelector('.close-modal').style.display = 'none';
+                        document.querySelector('.selected-room-info').style.display = 'none';
+
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    },
+                    "prefill": {
+                        "name": name,
+                        "contact": mobile
+                    },
+                    "theme": {
+                        "color": "#8da399"
+                    },
+                    "modal": {
+                        "ondismiss": function () {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        }
+                    }
+                };
+
+                const rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function (response) {
+                    alert('Payment Failed: ' + response.error.description);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                });
+                rzp1.open();
+
+            } catch (err) {
+                console.error(err);
+                alert('Error: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        }
+        window.handleBookingSubmit = handleBookingSubmit;
+
+
+        // --- 3. Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade in
+            const cards = document.querySelectorAll('.room-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => { card.style.opacity = '1'; }, index * 150);
+            });
+
+            // Modal close
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target.id === 'bookingModal') closeModal();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+[build]
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["pdfkit"]
+  included_files = ["assets/**"]
+
+[[redirects]]
+  from = "/*"
+  to = "/INDEX.HTML"
+  status = 200
+  force = false

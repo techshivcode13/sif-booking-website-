@@ -1,0 +1,247 @@
+:root {
+    --bg-color: #FDFBF7;
+    --surface-color: #FFFFFF;
+    --text-primary: #2C2C2C;
+    --text-secondary: #666666;
+    --accent-color: #8da399;
+    --accent-hover: #7b9187;
+    --border-color: #E6E2DD;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Splash Screen */
+.splash-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(141, 163, 153, 0.1) 0%, rgba(253, 251, 247, 1) 100%);
+    padding: 2rem;
+}
+
+.splash-header {
+    font-family: 'Forum', cursive;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.2s;
+    font-weight: 400;
+}
+
+.splash-logo-img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.4s;
+}
+
+.splash-tagline {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-family: 'Forum', cursive;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.6s;
+}
+
+.btn-get-started {
+    padding: 1rem 3rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.6s;
+    letter-spacing: 0.05em;
+}
+
+.btn-get-started:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(141, 163, 153, 0.3);
+}
+
+/* Retreats Page */
+.retreats-container {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.header h1 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.retreat-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.retreat-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+}
+
+.retreat-card:hover {
+    transform: translateY(-8px);
+}
+
+.retreat-image {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.retreat-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.retreat-content {
+    padding: 2rem;
+}
+
+.retreat-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.retreat-location {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.retreat-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.retreat-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.btn-book {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-book:hover {
+    background: var(--accent-hover);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .splash-logo {
+        font-size: 3rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .retreat-grid {
+        grid-template-columns: 1fr;
+    }
+}

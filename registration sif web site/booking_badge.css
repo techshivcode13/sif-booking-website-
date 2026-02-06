@@ -1,0 +1,19 @@
+/* Beds Remaining Badge */
+.beds-remaining {
+    display: inline-block;
+    background: rgba(141, 163, 153, 0.15);
+    color: var(--text-secondary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+}
+
+.beds-remaining.urgency-high {
+    background: rgba(229, 57, 53, 0.1);
+    color: #e53935;
+}

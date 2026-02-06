@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Sunyatee Retreat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-card h3 {
+            font-family: var(--font-serif);
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .info-card p {
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-send:hover {
+            background: var(--accent-hover);
+        }
+
+        .nav-simple {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-simple">
+        <a href="INDEX.HTML" class="btn-back">← Back to Retreats</a>
+        <img src="assets/logo.png" alt="Logo" style="height: 40px;">
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h1>Contact Us</h1>
+            <p>We are here to help you on your journey to inner silence. Reach out to us through any of the channels
+                below.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="info-column">
+                <div class="info-card">
+                    <h3>Office Address</h3>
+                    <p>201, Ram Residency, Near UCO Bank,<br>Manish Nagar<br>Nagpur – 440015</p>
+                </div>
+                <div class="info-card">
+                    <h3>Phone</h3>
+                    <p>+91 9356474699</p>
+                </div>
+                <div class="info-card">
+                    <h3>Email</h3>
+                    <p>info@sunyatee.com</p>
+                </div>
+            </div>
+
+            <div class="form-column">
+                <div class="contact-form">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Thank you for your message. We will get back to you shortly.');">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required placeholder="Your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-send">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer
+        style="text-align: center; padding: 3rem; color: var(--text-secondary); border-top: 1px solid var(--border-color); margin-top: 4rem;">
+        <p>&copy; 2026 Sunyatee International Foundation. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
